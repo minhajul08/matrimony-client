@@ -8,9 +8,14 @@ import {
   
 } from "react-router-dom";
 import { router } from './Routes/Routes';
+import AuthProvider from './providers/AuthProvider';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <RouterProvider router={router} />
+    <div className='w-[1280px] mx-auto'>
+    <AuthProvider>
+    <RouterProvider router={router} />
+    </AuthProvider>
+    </div>
   </StrictMode>,
 )
