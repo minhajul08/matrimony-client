@@ -1,9 +1,14 @@
 
 
+import Banner from "./Banner/Banner";
+import CardSection from "./Banner/CardSection/CardSection";
+
+
 const Home = () => {
     return (
         <div className="min-h-screen">
-        dfgs
+        <Banner></Banner>
+        <CardSection></CardSection>
         </div>
     );
 };

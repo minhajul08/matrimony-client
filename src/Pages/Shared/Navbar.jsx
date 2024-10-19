@@ -20,7 +20,7 @@ const Navbar = () => {
      {
        user ? <>
        <li>
-         <button onClick={handelLogout} className="bg-[#18719b] text-white btn rounded-full">Logout</button></li>
+         <button onClick={handelLogout} className="bg-[#18719b] text-white btn rounded-full border-0">Logout</button></li>
      </> : <>
        <li><Link to="/login">Login</Link></li>
      </>
@@ -29,7 +29,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar max-w-screen-xl text-white fixed z-10 bg-opacity-30 bg-black">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
