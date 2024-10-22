@@ -4,14 +4,22 @@ import { faStar, faStarHalfAlt, faStar as faStarEmpty } from '@fortawesome/free-
 
 const SuccessStory = () => {
   const [success, setSuccess] = useState([]);
+  const [sortOrder, setSortOrder] = useState('desc'); // Default to descending order
 
   useEffect(() => {
     fetch('http://localhost:5000/successStory')
       .then((res) => res.json())
       .then((data) => {
-        setSuccess(data);
+        const sortedData = data.sort((a, b) => {
+          if (sortOrder === 'asc') {
+            return new Date(a.date) - new Date(b.date); // Ascending order
+          } else {
+            return new Date(b.date) - new Date(a.date); // Descending order
+          }
+        });
+        setSuccess(sortedData);
       });
-  }, []);
+  }, [sortOrder]); // Re-fetch data when the sort order changes
 
   // Function to display stars based on the review score
   const renderStars = (review) => {
@@ -49,6 +57,20 @@ const SuccessStory = () => {
       <div>
         <h1 className="text-3xl text-center my-5">Success-Story</h1>
       </div>
+
+      {/* Dropdown to select sort order */}
+      <div className="flex justify-center items-center my-5">
+        <label className="mr-2 ">Sort by Date:</label>
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className="p-2 border rounded"
+        >
+          <option value="asc">Ascending (Oldest to Newest)</option>
+          <option value="desc">Descending (Newest to Oldest)</option>
+        </select>
+      </div>
+
       <div className="grid grid-cols-3 gap-5 my-5">
         {success.map((su) => (
           <div key={su._id} className=" card-compact bg-base-100 shadow-xl">

@@ -1,0 +1,32 @@
+.success-counter {
+    padding: 50px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .counters {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .counter {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
+  }
+  
+  .counter h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .counter p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b8a3e;
+  }
+  

@@ -1,0 +1,22 @@
+.how-it-works {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .steps-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .step {
+    margin: 20px;
+    padding: 20px;
+    max-width: 200px;
+  }
+  
+  .step-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  
