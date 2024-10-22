@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const BioDataPage = () => {
     const [bioData, setBioData] = useState([]);
@@ -67,7 +68,7 @@ const BioDataPage = () => {
            
 
             {/* Created Biodata */}
-            <div className="w-3/4 p-4">
+            <div className="w-3/4 p-4 mt-20">
                 <h2 className="text-xl mb-4">Created Biodata</h2>
 
                 {filteredBiodata.length === 0 ? (
@@ -77,7 +78,7 @@ const BioDataPage = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                             {currentBiodata.map(person => (
                                 <div key={person._id} className="bg-base-100 shadow-2xl p-5">
-                                    <img className="w-40 h-40 rounded-full" src={person.profileUrl} alt="Profile" />
+                                    <img className="w-40 h-40 rounded-full" src={person.image} alt="Profile" />
                                     <div className="ml-5 text-gray-600 font-serif">
                                         <p><strong>Id:</strong> {person.id}</p>
                                         <p><strong>Type:</strong> {person.gender}</p>
@@ -85,7 +86,7 @@ const BioDataPage = () => {
                                         <p><strong>Age:</strong> {person.age}</p>
                                         <p><strong>Occupation:</strong> {person.occupation}</p>
                                         <div className="mt-2">
-                                            <button className="btn">View Profile</button>
+                                        <Link to={`/bioDataDetails/${person._id}`}><p className='btn-link text-[#bdac62] mt-5 hover:text-black'>View Profile</p></Link>
                                         
                                         </div>
                                     </div>
@@ -108,7 +109,7 @@ const BioDataPage = () => {
                     </>
                 )}
             </div>
-            <div className="w-1/4 p-4">
+            <div className="w-1/4 p-4 mt-20">
                 <h2 className="text-xl mb-4">Filters</h2>
 
                 {/* Filter by Age */}
