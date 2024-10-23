@@ -1,25 +1,54 @@
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; // Assuming you're using react-router-dom
 
 const BioDataDetailsPage = () => {
-    return (
-        <div>
-          <div className="card bg-base-100 w-96 shadow-xl">
-  <figure>
-    <img 
-    className=""
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes" />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
+  const { id } = useParams(); // Get the 'id' from the route params
+  const [bioData, setBioData] = useState(null); // Initialize bioData as null
+  const [loading, setLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/bioDataDetails/${id}`);
+        const data = await response.json();
+        setBioData(data); // Set the fetched data
+        setLoading(false); // Set loading to false
+      } catch (error) {
+        console.error("Error fetching biodata:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [id]); // Dependency is 'id' to avoid infinite re-fetching
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="flex">
+      {bioData ? (
+        <div className="mt-20">
+          <h1>{bioData.name}</h1>
+          {/* Display other bioData details as needed */}
+          <p>Age: {bioData.age}</p>
+          <h2 className="text-lg font-semibold">Details</h2>
+         <p><strong>Height:</strong> {bioData.height}</p>
+         <p><strong>Religion:</strong> {bioData.religion}</p>
+         <p><strong>Caste:</strong> {bioData.caste}</p>
+         <p><strong>Education:</strong> {bioData.education}</p>
+         <p><strong>Occupation:</strong> {bioData.occupation}</p>
+          <p>Gender: {bioData.gender}</p>
+          {/* Add more fields as per your biodata schema */}
         </div>
-    );
+         
+      ) : (
+        <div>No biodata found.</div>
+      )}
+    </div>
+  );
 };
 
 export default BioDataDetailsPage;
+

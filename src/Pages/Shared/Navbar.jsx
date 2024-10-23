@@ -5,6 +5,7 @@ import logo from '../../../src/assets/logo.svg'
 
 const Navbar = () => {
   const {user,logOut} = useContext (AuthContext)
+  
   const handelLogout = () => {
     logOut()
       .then(() => { })
@@ -16,6 +17,7 @@ const Navbar = () => {
     <li><Link to='/biodatas'>Biodatas</Link></li>
     <li><Link to='/about'>About Us</Link></li>
     <li><Link to='/contract'>Contract Us</Link></li>
+    <li><Link to='/dashboard/BioData'>Dashboard</Link></li>
     
      {
        user ? <>

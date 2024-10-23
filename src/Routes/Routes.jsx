@@ -8,6 +8,10 @@ import Login from "../Pages/Home/Home/Login";
 import Register from "../Pages/Home/Home/Register";
 import BioDataPage from "../Pages/Home/Home/BioDataPage/BioDataPage";
 import BioDataDetailsPage from "../Pages/Home/Home/BioDataDetailsPage/BioDataDetailsPage";
+import PrivateRoutes from "./PrivateRoutes";
+import DashBoard from "../Layout/DashBoard";
+import BioData from "../Pages/DashBoard/BioData/BioData";
+import Edit from "../Pages/DashBoard/Edit/Edit";
 
   export const router = createBrowserRouter([
     {
@@ -32,8 +36,26 @@ import BioDataDetailsPage from "../Pages/Home/Home/BioDataDetailsPage/BioDataDet
         },
         {
           path: '/bioDataDetails/:id',
-          element: <BioDataDetailsPage></BioDataDetailsPage>
+          element: <PrivateRoutes>
+            <BioDataDetailsPage></BioDataDetailsPage>
+          </PrivateRoutes>
         }
       ]
     },
+    {
+      path:'dashboard',
+      element:<DashBoard></DashBoard>,
+      children:[
+        {
+          path: 'bioData',
+          element: <PrivateRoutes>
+            <BioData></BioData>
+          </PrivateRoutes>
+        },
+        {
+          path: 'edit',
+          element: <Edit></Edit>
+        }
+      ]
+    }
   ]);
