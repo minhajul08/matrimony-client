@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, replace, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
 
 const Login = () => {
   const {signIn} = useContext (AuthContext)
-  const navigate =  useNavigate ()
+  const navigate =  useNavigate ();
+  const location = useLocation ();
+
+  const from = location.state?.from?.pathname || "/";
     const {
         register,
         formState: { errors },
@@ -26,7 +29,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate ('/');
+        navigate (from, {replace:true});
       }
     return (
         <div>

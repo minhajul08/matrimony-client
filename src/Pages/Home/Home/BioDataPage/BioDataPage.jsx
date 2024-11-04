@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { ImFileEmpty } from "react-icons/im";
 import { Link } from "react-router-dom";
 
 const BioDataPage = () => {
@@ -64,6 +66,12 @@ const BioDataPage = () => {
 
     return (
         <div className="flex">
+
+            <Helmet>
+                <title>
+                Matrimony | BioData
+                </title>
+            </Helmet>
             {/* Filter Options */}
            
 
@@ -72,7 +80,7 @@ const BioDataPage = () => {
                 <h2 className="text-xl mb-4">Created Biodata</h2>
 
                 {filteredBiodata.length === 0 ? (
-                    <div className="text-center">No data is available</div>
+                    <div className="flex items-center justify-center "> <ImFileEmpty /> No data is available</div>
                 ) : (
                     <>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

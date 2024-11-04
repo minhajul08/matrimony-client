@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import DashBoard from "../Layout/DashBoard";
 import BioData from "../Pages/DashBoard/BioData/BioData";
 import Edit from "../Pages/DashBoard/Edit/Edit";
+import Favorite from "../Pages/DashBoard/Favorite/Favorite";
 
   export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ import Edit from "../Pages/DashBoard/Edit/Edit";
         {
           path: 'edit',
           element: <Edit></Edit>
+        },
+        {
+          path: 'favorite',
+          element: <Favorite></Favorite>
         }
       ]
     }

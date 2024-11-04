@@ -34,7 +34,7 @@ const DashBoard = () => {
             <NavLink to='/dashboard/userHome'> <FaUser></FaUser> My contract request</NavLink>
            </li>
            <li> 
-            <NavLink to='/dashboard/userHome'> <MdOutlineFavorite />Favourites Biodata</NavLink>
+            <NavLink to='/dashboard/favorite'> <MdOutlineFavorite />Favorites Biodata</NavLink>
            </li>
          <li><button onClick={handelLogout} className="bg-[#18719b] text-white btn rounded-full border-0">Logout</button></li>
            </ul>

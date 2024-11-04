@@ -3,12 +3,16 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../../components/SocialLogin/SocialLogin';
+
 
 const Register = () => {
-  const {crateUser} = useContext (AuthContext)
+  const {crateUser, updateUserProfile} = useContext (AuthContext);
+
   const navigate = useNavigate ();
     const {
         register,
+        reset,
         formState: { errors },
         handleSubmit,
       } = useForm()
@@ -17,19 +21,29 @@ const Register = () => {
         crateUser (data.email,data.password)
         .then ((loggedUser) => {
            console.log (loggedUser.user)
+           updateUserProfile (data.name ,data.photoURL)
+           .then ( () => {
+            console.log ('user profile info updated')
+            reset ();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Register successfully",
+              showConfirmButton: false,
+              timer: 1500
+            });
+            navigate ('/login')
+           })
+           .catch (error => console.log (error))
         })
-Swal.fire({
-  position: "top-end",
-  icon: "success",
-  title: "Register successfully",
-  showConfirmButton: false,
-  timer: 1500
-});
-navigate ('/login')
+
+
       }
+
+      
     return (
         <div>
-           <div className="hero bg-base-200 min-h-screen">
+           <div className="hero bg-base-200 min-h-screen ">
   <div className="hero-content">
 
     <div className="card bg-base-100  shrink-0 shadow-2xl">
@@ -83,8 +97,12 @@ navigate ('/login')
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
         </div>
-        <p className='text-base my-3'>Already have an account <Link className='text-blue-700 btn-link' to='/login'>Login</Link></p>
+       
       </form>
+      <p className='text-base mb-3 px-8'>Already have an account <Link className='text-blue-700 btn-link' to='/login'>Login</Link></p>
+      <div className="divider px-6"></div>
+      <SocialLogin></SocialLogin>
+      
     </div>
   </div>
 </div>
