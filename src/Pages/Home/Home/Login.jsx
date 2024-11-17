@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, replace, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../../components/SocialLogin/SocialLogin';
 
 
 const Login = () => {
@@ -63,8 +64,10 @@ const Login = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
-        <p className="my-3"> Don't have an account <Link className='text-blue-700 btn-link' to='/register'>Register</Link> </p>
-      </form>
+      </form> 
+      <p className="text-base mb-3 px-8"> Don't have an account <Link className='text-blue-700 btn-link' to='/register'>Register</Link> </p>
+      <div className="divider px-6"></div>
+      <SocialLogin></SocialLogin>
     </div>
   </div>
 </div>

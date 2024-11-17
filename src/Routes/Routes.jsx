@@ -13,6 +13,7 @@ import DashBoard from "../Layout/DashBoard";
 import BioData from "../Pages/DashBoard/BioData/BioData";
 import Edit from "../Pages/DashBoard/Edit/Edit";
 import Favorite from "../Pages/DashBoard/Favorite/Favorite";
+import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
 
   export const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ import Favorite from "../Pages/DashBoard/Favorite/Favorite";
         {
           path: 'favorite',
           element: <Favorite></Favorite>
+        },
+        {
+          path: 'manageUser',
+          element: <ManageUser></ManageUser>
         }
       ]
     }

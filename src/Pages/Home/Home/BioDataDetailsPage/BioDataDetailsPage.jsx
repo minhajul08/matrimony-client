@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom"; // Assuming you're using react-router-dom
+import { useNavigate, useParams } from "react-router-dom"; // Assuming you're using react-router-dom
 import { IoMdPhonePortrait } from "react-icons/io";
 import img1 from '../../../../assets/icon/age.png';
 import img2 from '../../../../assets/icon/location.png';
@@ -19,6 +19,7 @@ const BioDataDetailsPage = () => {
   const { id } = useParams(); 
   const [bioData, setBioData] = useState(null);
   const [loading, setLoading] = useState(true); 
+  const navigate = useNavigate ();
   const {user} = useAuth ();
   const axiosSecure = useAxiosSecure ();
   const handelAddFavorite = () => {
@@ -40,6 +41,7 @@ const BioDataDetailsPage = () => {
               showConfirmButton: false,
               timer: 1500
             });
+            navigate ('/dashboard/favorite')
           }
         })
     }
@@ -98,7 +100,6 @@ const BioDataDetailsPage = () => {
        </div>
           <div className="col-span-10   border border-red-600 space-y-5 p-5">
           <p className="uppercase text-4xl"><strong> {bioData.name} </strong> </p>
-          <p className="btn bg-yellow-500 text-white btn-sm">100 Views</p>
 
           <div className="grid grid-cols-7 items-center gap-3">
             <div className="flex flex-col justify-center items-center p-8 rounded-lg  border border-gray-500 ">
