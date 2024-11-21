@@ -14,6 +14,7 @@ import BioData from "../Pages/DashBoard/BioData/BioData";
 import Edit from "../Pages/DashBoard/Edit/Edit";
 import Favorite from "../Pages/DashBoard/Favorite/Favorite";
 import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
+import AdminRoutes from "./AdminRoutes";
 
   export const router = createBrowserRouter([
     {
@@ -64,7 +65,9 @@ import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
         },
         {
           path: 'manageUser',
-          element: <ManageUser></ManageUser>
+          element: <AdminRoutes>
+            <ManageUser></ManageUser>
+          </AdminRoutes>
         }
       ]
     }

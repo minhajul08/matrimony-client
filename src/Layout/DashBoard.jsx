@@ -26,16 +26,16 @@ const DashBoard = () => {
                isAdmin ? <>
                   
            <li> 
-            <NavLink to='/dashboard/edit'> <FaEdit /> Admin Dashboard</NavLink>
+            <NavLink to='/dashboard/admin'> <FaEdit /> Admin Dashboard</NavLink>
            </li>
            <li> 
             <NavLink to='/dashboard/manageUser'> <GrView /> Manage Users</NavLink>
            </li>
            <li> 
-            <NavLink to='/dashboard/userHome'> <FaUser></FaUser> Approved Premium</NavLink>
+            <NavLink to='/dashboard/premium'> <FaUser></FaUser> Approved Premium</NavLink>
            </li>
            <li> 
-            <NavLink to='/dashboard/favorite'> <MdOutlineFavorite />Approved Contact Request
+            <NavLink to='/dashboard/contract'> <MdOutlineFavorite />Approved Contact Request
             </NavLink>
            </li>
            <div className="divider"></div>
@@ -46,16 +46,16 @@ const DashBoard = () => {
                </> :
                <>
                     <li> 
-            <NavLink to='/'> <FaHome />UserHome</NavLink>
+            <NavLink to='/userHome'> <FaHome />UserHome</NavLink>
            </li>
            <li> 
             <NavLink to='/dashboard/edit'> <FaEdit /> Edit BioData</NavLink>
            </li>
            <li> 
-            <NavLink to='/dashboard/userHome'> <GrView /> View BioData</NavLink>
+            <NavLink to='/dashboard/view'> <GrView /> View BioData</NavLink>
            </li>
            <li> 
-            <NavLink to='/dashboard/userHome'> <FaUser></FaUser> My contract request</NavLink>
+            <NavLink to='/dashboard/contract'> <FaUser></FaUser> My contract request</NavLink>
            </li>
            <li> 
             <NavLink to='/dashboard/favorite'> <MdOutlineFavorite />Favorites Biodata</NavLink>
