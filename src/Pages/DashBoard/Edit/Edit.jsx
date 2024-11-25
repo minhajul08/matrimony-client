@@ -3,12 +3,14 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 import useAxiosPublic from "../../../hooks/UseAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 const Edit = () => {
   const {user} = useAuth ();
   const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
@@ -20,12 +22,46 @@ const Edit = () => {
         'content-type': 'multipart/form-data'
       }
     });
-    console.log(res.data)
+    if (res.data.success) {
+      const addItem = {
+        
+        gender:data.bioDataType,
+        name: data.name,
+        fatherName: data.fatherName,
+        motherName: data.motherName,
+        permanentDivision: data.permanentDivision,
+        presentDivision: data.presentDivision,
+        date: data.date,
+        height: data.height,
+        weight: data.weight,
+        age: data.age,
+        partnerAge: data.partnerAge,
+        occupation: data.occupation,
+        partnerHeight: data.partnerHeight,
+        partnerWeight: data.partnerWeight,
+        race: data.race,
+        mobile: data.mobile,
+        email: data?.email,
+        image: res.data.data.display_url
+      }
+      const bioData = await axiosPublic.post ('/bioData', addItem)
+      console.log (bioData.data)
+      if (bioData.data.insertedId) {
+           reset ();
+           Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "BioData will be created successfully and edited successfully ",
+            showConfirmButton: false,
+            timer: 1500
+          });
+      }
+    }
   }
   return (
     <div>
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Edit Biodata</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-center">Edit BioData</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className=' flex justify-between gap-5'>
             {/* BioData Types */}
@@ -34,13 +70,13 @@ const Edit = () => {
                 <span className="label-text">BioData Type</span>
 
               </label>
-              <select {...register("biodata", { required: true })} className="select select-bordered w-full" defaultValue="">
+              <select {...register("bioDataType", { required: true })} className="select select-bordered w-full" defaultValue="">
                 <option value="" disabled>Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
 
               </select>
-              {errors.biodata && <span className="text-red-500">biodata filed is required!</span>}
+              {errors.bioDataType && <span className="text-red-500">biodata filed is required!</span>}
             </div>
 
             {/* Name */}
@@ -368,9 +404,9 @@ const Edit = () => {
               <label className="label">
                 <span className="label-text">Mobile Number</span>
               </label>
-              <input type="number" name="number" placeholder="Mobile Number" className="input input-bordered"
-                {...register("number", { required: true })} />
-              {errors.number && <span className="text-red-500">number  filed is required</span>}
+              <input type="number" name="mobile" placeholder="Mobile Number" className="input input-bordered"
+                {...register("mobile", { pattern: /^[0-9]{10,11}$/ })} />
+              {errors.mobile && <span className="text-red-500">please enter a valid mobile number!</span>}
             </div>
 
 

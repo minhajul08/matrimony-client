@@ -102,20 +102,20 @@ const BioDataDetailsPage = () => {
           <p className="uppercase text-4xl"><strong> {bioData.name} </strong> </p>
 
           <div className="grid grid-cols-7 items-center gap-3">
-            <div className="flex flex-col justify-center items-center p-8 rounded-lg  border border-gray-500 ">
+            <div className="flex flex-col justify-center items-center p-5 rounded-lg  border border-gray-500 ">
               <p className="text-3xl">
               <img src={img2} alt="" />
               </p>
               <p className="text-xl">City</p>
-              <p className="text-2xl">
+              <p className="text-xl">
               
-                {bioData.division}
+                {bioData.permanentDivision}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center p-8 rounded-lg  border border-gray-500 ">
               <img src={img1} alt="" />
               <p className="text-xl">Age</p>
-              <p className="text-2xl">
+              <p className="text-xl">
                 {bioData.age}
               </p>
             </div>
@@ -124,7 +124,7 @@ const BioDataDetailsPage = () => {
                 <img src={img3} alt="" />
               </p>
               <p className="text-xl">Height</p>
-              <p className="text-2xl">
+              <p className="text-xl">
                 {bioData.height}
               </p>
             </div>
@@ -132,9 +132,9 @@ const BioDataDetailsPage = () => {
               <p className="text-3xl">
               <img src={img4} alt="" />
               </p>
-              <p className="text-xl">Religion</p>
-              <p className="text-2xl">
-                {bioData.religion}
+              <p className="text-xl mt-2">Race</p>
+              <p className="text-xl">
+                {bioData.race}
               </p>
             </div>
           </div>
@@ -145,12 +145,12 @@ const BioDataDetailsPage = () => {
           <p className="text-2xl"> {bioData.about}</p> 
           <div className="divider"></div>
        
-         <div className="space-y-5 text-2xl">
+         {/* <div className="space-y-5 text-2xl">
          <p className="uppercase"><strong>Contract info</strong> </p>
          <p className="flex items-center  gap-2"><IoMdPhonePortrait className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Phone:</span> {bioData.contact_info.phone} </p>
          <p className="flex items-center gap-2"><AiOutlineMail className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Email:</span> {bioData.contact_info.email} </p>
          <p className="flex items-center gap-2"><FaLocationDot className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Address:</span> {bioData.contact_info.email} </p>
-         </div>
+         </div> */}
          <div className="divider"></div>
         
          <p className="uppercase text-2xl my-5 "><strong>Personal Information</strong> </p>
@@ -173,10 +173,10 @@ const BioDataDetailsPage = () => {
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Date of birth:
           </span>
-          <span>03 Jan 1998</span>
+          <span>{bioData.date}</span>
         </p>
         <p className="flex justify-between items-center">
-          <span className="flex items-center font-semibold">
+          <span className="flex items-center ">
             <FiChevronRight className="mr-2" /> Height:
           </span>
           <span>{bioData.height}</span>

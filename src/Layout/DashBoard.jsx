@@ -60,6 +60,10 @@ const DashBoard = () => {
            <li> 
             <NavLink to='/dashboard/favorite'> <MdOutlineFavorite />Favorites Biodata</NavLink>
            </li>
+           <div className="divider"></div>
+           <li>
+            <NavLink to='/'> <FaHome></FaHome> Home</NavLink>
+           </li>
          <li><button onClick={handelLogout} className="bg-[#18719b] text-white btn rounded-full border-0">Logout</button></li>
                </>
             }

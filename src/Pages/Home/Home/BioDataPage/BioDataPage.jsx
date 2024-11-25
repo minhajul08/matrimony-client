@@ -90,7 +90,7 @@ const BioDataPage = () => {
                                     <div className="ml-5 text-gray-600 font-serif">
                                         <p><strong>Id:</strong> {person.id}</p>
                                         <p><strong>Type:</strong> {person.gender}</p>
-                                        <p><strong>Division:</strong> {person.division}</p>
+                                        <p><strong>Division:</strong> {person.permanentDivision}</p>
                                         <p><strong>Age:</strong> {person.age}</p>
                                         <p><strong>Occupation:</strong> {person.occupation}</p>
                                         <div className="mt-2">
