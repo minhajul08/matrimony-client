@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Favorite = () => {
-    const [favorite,refetch] = useFavorite([]);
+    const [favorite, refetch] = useFavorite([]);
     const axiosSecure = useAxiosSecure();
     const handelDelete = id => {
         Swal.fire({
@@ -21,7 +21,7 @@ const Favorite = () => {
                 axiosSecure.delete(`/favorite/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
-                            refetch ()
+                            refetch()
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",

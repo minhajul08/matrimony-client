@@ -45,9 +45,7 @@ const DashBoard = () => {
          <li><button onClick={handelLogout} className="bg-[#18719b] text-white btn rounded-full border-0">Logout</button></li>
                </> :
                <>
-                    <li> 
-            <NavLink to='/userHome'> <FaHome />UserHome</NavLink>
-           </li>
+                  
            <li> 
             <NavLink to='/dashboard/edit'> <FaEdit /> Edit BioData</NavLink>
            </li>
@@ -63,6 +61,9 @@ const DashBoard = () => {
            <div className="divider"></div>
            <li>
             <NavLink to='/'> <FaHome></FaHome> Home</NavLink>
+           </li>
+           <li>
+            <NavLink to='/bioDatas'> <FaHome></FaHome> BioData</NavLink>
            </li>
          <li><button onClick={handelLogout} className="bg-[#18719b] text-white btn rounded-full border-0">Logout</button></li>
                </>

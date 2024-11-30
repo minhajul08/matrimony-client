@@ -71,7 +71,7 @@ const SuccessStory = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-3 gap-5 my-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5">
         {success.map((su) => (
           <div key={su._id} className=" card-compact bg-base-100 shadow-xl">
             <img className="h-[400px] w-full" src={su.coupleImage} alt="Couple" />

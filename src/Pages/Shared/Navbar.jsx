@@ -14,7 +14,7 @@ const Navbar = () => {
   }
     const navLinks = <>
     <li><Link to='/'>Home</Link></li>
-    {/* <li><Link to='/'>{user?.displayName}</Link></li> */}
+  
     <li><Link to='/biodatas'>Biodatas</Link></li>
     <li><Link to='/about'>About Us</Link></li>
     <li><Link to='/contract'>Contract Us</Link></li>
@@ -32,7 +32,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar max-w-screen-xl text-white fixed z-10 bg-opacity-30 bg-black ">
+            <div className="navbar max-w-screen-xl lg:text-white fixed z-10 bg-opacity-30 bg-black">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

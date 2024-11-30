@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-import useAxiosPublic from "../../../hooks/UseAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 const Edit = () => {
+  const navigate = useNavigate ();
   const {user} = useAuth ();
   const axiosPublic = useAxiosPublic();
   const {
@@ -48,13 +50,16 @@ const Edit = () => {
       console.log (bioData.data)
       if (bioData.data.insertedId) {
            reset ();
+           navigate ('/dashboard/view')
            Swal.fire({
             position: "top-end",
             icon: "success",
             title: "BioData will be created successfully and edited successfully ",
             showConfirmButton: false,
             timer: 1500
+            
           });
+          
       }
     }
   }

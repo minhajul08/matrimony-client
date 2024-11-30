@@ -32,10 +32,10 @@ const CardSection = () => {
 
   return (
     <div>
-      <h1 className="text-3xl text-center">Exclusive Premium Members</h1>
+      <h1 className="text-2xl lg:text-3xl text-center">Exclusive Premium Members</h1>
       <div className="flex justify-end">
         <select
-          className="select select-bordered w-full max-w-52"
+          className="select select-bordered w-full max-w-52 mt-5"
           value={sortOrder}
           onChange={handleChange}
         >
@@ -43,7 +43,7 @@ const CardSection = () => {
           <option value="descending">Higher</option>
         </select>
       </div>
-      <div className="grid grid-cols-3 gap-5 my-5">
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-5 my-5">
         {menu.map((premium) => (
           <div key={premium._id} className=" bg-base-100 shadow-2xl ">
             <div className="flex justify-between mx-3 p-5">

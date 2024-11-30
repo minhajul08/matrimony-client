@@ -27,7 +27,7 @@ const BioDataDetailsPage = () => {
         const addFavorite = {
           id:bioData.id,
           name:bioData.name,
-          permanentAddress:bioData.division,
+          permanentAddress:bioData.permanentDivision,
           email:user?.email,
           occupation:bioData.occupation,
         }
@@ -74,7 +74,7 @@ const BioDataDetailsPage = () => {
         setBioData(data); 
         setLoading(false); 
       } catch (error) {
-        console.error("Error fetching biodata:", error);
+        console.error("Error fetching bioData:", error);
         setLoading(false);
       }
     };
@@ -94,14 +94,19 @@ const BioDataDetailsPage = () => {
         </title>
       </Helmet>
       {bioData ? (
-        <div className="grid grid-cols-12 gap-10 my-20 border border-red-700 font-sans"> 
-       <div className="col-span-2 border border-red-600">
-       <img className="" src={bioData.image} alt="" />
+        <div className="grid grid-cols-12 gap-10 lg:my-20  font-sans"> 
+       <div className="col-span-12 lg:col-span-5">
+       <img className="md:w-[1200px] lg:w-[600px] mx-auto" src={bioData.image} alt="" />
+       <div className="flex justify-evenly lg:justify-between">
+          
+          <button onClick={handelAddFavorite} className="btn btn-wide rounded bg-[#06684d] text-white">Add to favorite</button>
+           <button className="btn btn-wide rounded bg-yellow-500 text-white">Apply to premium</button>
+        </div>
        </div>
-          <div className="col-span-10   border border-red-600 space-y-5 p-5">
-          <p className="uppercase text-4xl"><strong> {bioData.name} </strong> </p>
+          <div className="col-span-12 lg:col-span-7 space-y-5 p-2 lg:p-5">
+          <p className="uppercase text-2xl lg:text-4xl"><strong> {bioData.name} </strong> </p>
 
-          <div className="grid grid-cols-7 items-center gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 items-center gap-3">
             <div className="flex flex-col justify-center items-center p-5 rounded-lg  border border-gray-500 ">
               <p className="text-3xl">
               <img src={img2} alt="" />
@@ -138,101 +143,96 @@ const BioDataDetailsPage = () => {
               </p>
             </div>
           </div>
-        
+         
         
         <div>
-        <p className="uppercase text-2xl"><strong>about</strong> </p>
+     
           <p className="text-2xl"> {bioData.about}</p> 
           <div className="divider"></div>
        
-         {/* <div className="space-y-5 text-2xl">
+         <div className="space-y-5 text-2xl p-5">
          <p className="uppercase"><strong>Contract info</strong> </p>
-         <p className="flex items-center  gap-2"><IoMdPhonePortrait className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Phone:</span> {bioData.contact_info.phone} </p>
-         <p className="flex items-center gap-2"><AiOutlineMail className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Email:</span> {bioData.contact_info.email} </p>
-         <p className="flex items-center gap-2"><FaLocationDot className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Address:</span> {bioData.contact_info.email} </p>
-         </div> */}
+         <p className="flex items-center  gap-2"><IoMdPhonePortrait className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Phone:</span> {bioData.mobile} </p>
+         <p className="flex items-center gap-2"><AiOutlineMail className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Email:</span> {bioData.email} </p>
+         <p className="flex items-center gap-2"><FaLocationDot className="border border-gray-500 rounded-lg text-3xl p-1 " /> <span>Address:</span> {bioData.permanentDivision} </p>
+         </div>
          <div className="divider"></div>
         
-         <p className="uppercase text-2xl my-5 "><strong>Personal Information</strong> </p>
-    <div className="flex flex-col md:flex-row md:justify-between font-sans text-[#4a3d3d] gap-10 text-xl">
-   
-      <div className="w-full md:w-1/2 space-y-2 mb-4 md:mb-0">
-        <p className="flex justify-between items-center">
+         <p className="uppercase text-2xl  lg:my-5 p-5 lg:p-0"><strong>Personal Information</strong> </p>
+    <div className="flex flex-col md:flex-row md:justify-between font-sans text-[#4a3d3d] gap-2 lg:gap-10 text-xl p-5 lg:p-0">
+    
+      <div className="w-full lg:w-1/2 space-y-2 mb-0 md:mb-0 p-0 md:p-0 lg:p-0">
+        <p className="flex md:justify-between  lg:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Name:
           </span>
-          <span>{bioData.name}</span>
+          <span className="ml-32 md:ml-2 lg:ml-2">{bioData.name}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex md:justify-between lg:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Mother's name:
           </span>
-          <span>Joney family</span>
+          <span className="ml-12 lg:ml-0">{bioData.motherName}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex md:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Date of birth:
           </span>
-          <span>{bioData.date}</span>
+          <span className="ml-[67px] md:ml-0">{bioData.date}</span>
         </p>
-        <p className="flex justify-between items-center">
-          <span className="flex items-center ">
+        <p className="flex md:justify-between items-center">
+          <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Height:
           </span>
-          <span>{bioData.height}</span>
+          <span className="ml-32 md:ml-0">{bioData.height}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex md:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Permanent address:
           </span>
-          <span>{bioData.religion}</span>
+          <span className="ml-3 md:ml-0">{bioData.permanentDivision}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex md:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Race:
           </span>
-          <span>{bioData.caste}</span>
+          <span className="ml-36 md:ml-0">{bioData.race}</span>
         </p>
        
       </div>
       
-      <div className="w-full md:w-1/2 space-y-2">
-        <p className="flex justify-between items-center">
+      <div className="w-full lg:w-1/2 space-y-2">
+        <p className="flex md:justify-between items-center">
           <span className="flex items-center font-semibold">
-            <FiChevronRight className="mr-2" /> Father's name:
+            <FiChevronRight className="mr-2" /> Father Name:
           </span>
-          <span>John Smith</span>
+          <span className="ml-[72px] md:ml-0">{bioData.fatherName}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex md:justify-between items-center">
           <span className="flex items-center font-semibold">
-            <FiChevronRight className="mr-2" /> Family name:
+            <FiChevronRight className="mr-2" /> Occupation:
           </span>
-          <span>{bioData.name}</span>
+          <span className="ml-[86px] md:ml-0">{bioData.occupation}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex md:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> age:
           </span>
-          <span>{bioData.age}</span>
+          <span className="ml-[158px] md:ml-0">{bioData.age}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex md:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Weight:
           </span>
-          <span>{bioData.height}</span>
+          <span className="ml-32 md:ml-0">{bioData.weight}</span>
         </p>
-        <p className="flex justify-between items-center">
+        <p className="flex lg:justify-between items-center">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Present address:
           </span>
-          <span>{bioData.occupation}</span>
+          <span className="ml-12 md:ml-0">{bioData.presentDivision}</span>
         </p>
-        <p className="flex justify-between items-center">
-          <span className="flex items-center font-semibold">
-            <FiChevronRight className="mr-2" /> Degree:
-          </span>
-          <span>{bioData.education}</span>
-        </p>
+      
        
     
       </div>
@@ -240,33 +240,30 @@ const BioDataDetailsPage = () => {
         </div> 
         <div>
         <div className="divider"></div>
+        
+        <div className="space-y-3 text-xl p-5 md:p-5 lg:ml-0">
         <p className="uppercase text-2xl my-3 "><strong>Expected Partner</strong> </p>
-        <div className="space-y-3 text-xl">
         <p className="flex  items-center gap-4">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Age:
           </span>
-          <span>{bioData.age}</span>
+          <span>{bioData.partnerAge}</span>
         </p>
         <p className="flex  items-center gap-4">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Height:
           </span>
-          <span>{bioData.height}</span>
+          <span>{bioData.partnerHeight}</span>
         </p>
         <p className="flex  items-center gap-4">
           <span className="flex items-center font-semibold">
             <FiChevronRight className="mr-2" /> Weight:
           </span>
-          <span>nai</span>
+          <span>{bioData.partnerWeight}</span>
         </p>
         </div>
         </div>
-        <div>
-          
-            <button onClick={handelAddFavorite} className="btn mr-3 bg-[#06684d] text-white">Add to favorite</button>
-             <button className="btn bg-yellow-500 text-white">Apply to premium</button>
-          </div>
+      
           </div> 
          
         </div>
