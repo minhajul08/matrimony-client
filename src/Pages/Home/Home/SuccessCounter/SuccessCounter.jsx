@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './SuccessCounter.css'; // Import your custom styles
+import './SuccessCounter.css'; 
 
 const SuccessCounter = () => {
   const [stats, setStats] = useState({

@@ -5,17 +5,15 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageUser = () => {
   const axiosSecure = useAxiosSecure();
-
-  // Fetching users with react-query
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [], refetch, isError, error } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
       const res = await axiosSecure.get('/users');
-      return res.data;
-    }
+      console.log("Fetched users data:", res.data);
+      return Array.isArray(res.data) ? res.data : []; 
+    },
   });
 
-  // Function to make user an admin
   const handleMakeAdmin = (user) => {
     axiosSecure.patch(`/users/admin/${user._id}`)
       .then(res => {
@@ -30,12 +28,9 @@ const ManageUser = () => {
           });
         }
       })
-      .catch(error => {
-        console.error("Error updating admin status:", error);
-      });
+      .catch(error => console.error("Error updating admin status:", error));
   };
 
-  // premium
   const handleMakePremium = async (user) => {
     try {
       const res = await axiosSecure.patch(`/users/premium/${user._id}`);
@@ -53,7 +48,10 @@ const ManageUser = () => {
       console.error("Error updating premium status:", error);
     }
   };
-  
+
+  if (isError) {
+    return <div>Error fetching users: {error.message}</div>;
+  }
 
   return (
     <div className="p-10">
@@ -70,41 +68,42 @@ const ManageUser = () => {
             </tr>
           </thead>
           <tbody className="text-xl text-gray-600">
-            {users.map((u, index) => (
-              <tr key={u._id}>
-                <th>{index + 1}</th>
-                <td>{u.name}</td>
-                <td>{u.email}</td>
-                <td>
-                  {u.role === 'admin' ? (
-                    'Admin'
-                  ) : (
-                    <button
-                      onClick={() => handleMakeAdmin(u)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition text-5xl"
-                    >
-                      <MdAdminPanelSettings />
-                    </button>
-                  )}
-                </td>
-                <td> 
-                  {u.premium ==='premium' ? (
-                    'Premium Member'
-                  ) : (
-                  <button
-                  onClick={ () => handleMakePremium (u)}
-                   className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition text-5xl">
-                    <MdWorkspacePremium />
-                  </button>
-                  )}
-                </td>
-              </tr>
-            ))}
+            {Array.isArray(users) &&
+              users.map((u, index) => (
+                <tr key={u._id}>
+                  <th>{index + 1}</th>
+                  <td>{u.name}</td>
+                  <td>{u.email}</td>
+                  <td>
+                    {u.role === 'admin' ? (
+                      'Admin'
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(u)}
+                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition text-5xl"
+                      >
+                        <MdAdminPanelSettings />
+                      </button>
+                    )}
+                  </td>
+                  <td>
+                    {u.premium === 'premium' ? (
+                      'Premium Member'
+                    ) : (
+                      <button
+                        onClick={() => handleMakePremium(u)}
+                        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition text-5xl"
+                      >
+                        <MdWorkspacePremium />
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
     </div>
   );
 };
-
 export default ManageUser;

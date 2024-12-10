@@ -38,8 +38,8 @@ const BioDataPage = () => {
     // Filter biodata based on selected filters
     const filteredBiodata = bioData.filter(person => {
         const ageCondition = (ageRange.min ? person.age >= ageRange.min : true) &&
-                            (ageRange.max ? person.age <= ageRange.max : true);
-        
+            (ageRange.max ? person.age <= ageRange.max : true);
+
         const genderCondition = gender ? person.gender.toLowerCase() === gender : true;
         const divisionCondition = division ? person.division === division : true;
         const occupationCondition = occupation ? person.occupation === occupation : true;
@@ -69,11 +69,11 @@ const BioDataPage = () => {
 
             <Helmet>
                 <title>
-                Matrimony | BioData
+                    Matrimony | BioData
                 </title>
             </Helmet>
             {/* Filter Options */}
-           
+
 
             {/* Created Biodata */}
             <div className="w-3/4 p-4 mt-20">
@@ -88,14 +88,14 @@ const BioDataPage = () => {
                                 <div key={person._id} className="bg-base-100 shadow-2xl p-5">
                                     <img className="w-40 h-40 rounded-full" src={person.image} alt="Profile" />
                                     <div className="ml-5 text-gray-600 font-serif">
-                                        <p><strong>Id:</strong> {person.id}</p>
+                                        <p><strong>Id:</strong> {person.BiodataId}</p>
                                         <p><strong>Type:</strong> {person.gender}</p>
                                         <p><strong>Division:</strong> {person.permanentDivision}</p>
                                         <p><strong>Age:</strong> {person.age}</p>
                                         <p><strong>Occupation:</strong> {person.occupation}</p>
                                         <div className="mt-2">
-                                        <Link to={`/bioDataDetails/${person._id}`}><p className='btn-link text-[#bdac62] mt-5 hover:text-black'>View Profile</p></Link>
-                                        
+                                            <Link to={`/bioDataDetails/${person._id}`}><p className='btn-link text-[#bdac62] mt-5 hover:text-black'>View Profile</p></Link>
+
                                         </div>
                                     </div>
                                 </div>
@@ -123,16 +123,16 @@ const BioDataPage = () => {
                 {/* Filter by Age */}
                 <div className="mb-6">
                     <label className="text-lg">Min Age:</label>
-                    <input 
-                        type="number" 
-                        value={ageRange.min} 
+                    <input
+                        type="number"
+                        value={ageRange.min}
                         onChange={(e) => setAgeRange({ ...ageRange, min: e.target.value })}
                         className="border p-1 mb-2 w-full"
                     />
                     <label className="text-lg">Max Age:</label>
-                    <input 
-                        type="number" 
-                        value={ageRange.max} 
+                    <input
+                        type="number"
+                        value={ageRange.max}
                         onChange={(e) => setAgeRange({ ...ageRange, max: e.target.value })}
                         className="border p-1 mb-4 w-full"
                     />
@@ -142,19 +142,19 @@ const BioDataPage = () => {
                 <div className="mb-6">
                     <h3 className="text-lg font-semibold">Biodata Type:</h3>
                     <label className="block">
-                        <input 
-                            type="radio" 
-                            value="male" 
-                            checked={gender === 'male'} 
-                            onChange={(e) => setGender(e.target.value)} 
+                        <input
+                            type="radio"
+                            value="male"
+                            checked={gender === 'male'}
+                            onChange={(e) => setGender(e.target.value)}
                         /> Male
                     </label>
                     <label className="block">
-                        <input 
-                            type="radio" 
-                            value="female" 
-                            checked={gender === 'female'} 
-                            onChange={(e) => setGender(e.target.value)} 
+                        <input
+                            type="radio"
+                            value="female"
+                            checked={gender === 'female'}
+                            onChange={(e) => setGender(e.target.value)}
                         /> Female
                     </label>
                 </div>
@@ -164,10 +164,10 @@ const BioDataPage = () => {
                     <h3 className="text-lg font-semibold">Division:</h3>
                     {['Dhaka', 'Chattagram', 'Rangpur', 'Barisal', 'Khulna', 'Maymansingh', 'Sylhet'].map(div => (
                         <label key={div} className="block">
-                            <input 
-                                type="checkbox" 
-                                value={div} 
-                                checked={division === div} 
+                            <input
+                                type="checkbox"
+                                value={div}
+                                checked={division === div}
                                 onChange={(e) => setDivision(e.target.checked ? div : '')}
                             /> {div}
                         </label>
@@ -179,10 +179,10 @@ const BioDataPage = () => {
                     <h3 className="text-lg font-semibold">Occupation:</h3>
                     {['Engineer', 'Teacher', 'Doctor', 'Nurse', 'Architect', 'Artist', 'Scientist', 'Journalist', 'Businessman', 'Lawyer', 'Farmer', 'Researcher', 'Designer', 'Pilot', 'Pharmacist', 'Chef', 'Accountant'].map(occ => (
                         <label key={occ} className="block">
-                            <input 
-                                type="checkbox" 
-                                value={occ} 
-                                checked={occupation === occ} 
+                            <input
+                                type="checkbox"
+                                value={occ}
+                                checked={occupation === occ}
                                 onChange={(e) => setOccupation(e.target.checked ? occ : '')}
                             /> {occ}
                         </label>

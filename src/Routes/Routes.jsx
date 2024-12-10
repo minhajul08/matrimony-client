@@ -16,6 +16,7 @@ import Favorite from "../Pages/DashBoard/Favorite/Favorite";
 import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
 import AdminRoutes from "./AdminRoutes";
 import ViewBioData from "../Pages/DashBoard/ViewBioData/ViewBioData";
+import AdminDashboard from "../Pages/DashBoard/AdminDashboard/AdminDashboard";
 
   export const router = createBrowserRouter([
     {
@@ -69,6 +70,12 @@ import ViewBioData from "../Pages/DashBoard/ViewBioData/ViewBioData";
           element: <AdminRoutes>
             <ManageUser></ManageUser>
           </AdminRoutes>
+        },
+        {
+              path: 'admin',
+              element: <AdminRoutes>
+                <AdminDashboard></AdminDashboard>
+              </AdminRoutes>
         },
         {
           path: 'view',

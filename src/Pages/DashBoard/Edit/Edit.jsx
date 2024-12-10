@@ -48,7 +48,7 @@ const Edit = () => {
       }
       const bioData = await axiosPublic.post ('/bioData', addItem)
       console.log (bioData.data)
-      if (bioData.data.insertedId) {
+      if (bioData.data.data?.insertedId) {
            reset ();
            navigate ('/dashboard/view')
            Swal.fire({
@@ -65,12 +65,12 @@ const Edit = () => {
   }
   return (
     <div>
-      <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Edit BioData</h2>
+      <div className="lg:max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+        <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">Edit BioData</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className=' flex justify-between gap-5'>
+          <div className=' md:flex justify-between gap-5'>
             {/* BioData Types */}
-            <div className="form-control w-full ">
+            <div className="form-control w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">BioData Type</span>
 
@@ -85,7 +85,7 @@ const Edit = () => {
             </div>
 
             {/* Name */}
-            <div className="form-control w-full">
+            <div className="form-control w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -97,11 +97,11 @@ const Edit = () => {
 
 
           </div>
-          <div className="flex justify-between gap-5 mb-3">
+          <div className="md:flex justify-between gap-5 mb-3">
             {/* Father's name */}
 
 
-            <div className="form-control w-full">
+            <div className="form-control w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Father's Name</span>
               </label>
@@ -113,7 +113,7 @@ const Edit = () => {
 
             {/* Mother's name */}
 
-            <div className="form-control w-full">
+            <div className="form-control w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Mother's Name</span>
               </label>
@@ -122,12 +122,12 @@ const Edit = () => {
               {errors.motherName && <span className="text-red-500">mother name filed is required</span>}
             </div>
           </div>
-          <div className="flex gap-5">
+          <div className="md:flex gap-5">
 
             {/* permanent division */}
 
 
-            <div className="form-control w-full ">
+            <div className="form-control w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">Permanent Division</span>
 
@@ -148,7 +148,7 @@ const Edit = () => {
 
 
             {/* present division */}
-            <div className="form-control w-full ">
+            <div className="form-control w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">Present Division</span>
 
@@ -170,7 +170,7 @@ const Edit = () => {
 
 
           {/* date of birth */}
-          <div className="form-control w-full">
+          <div className="form-control  w-52 md:w-full">
             <label className="label">
               <span className="label-text">Date of Birth</span>
             </label>
@@ -180,8 +180,8 @@ const Edit = () => {
           </div>
 
           {/* height */}
-          <div className="flex gap-5">
-            <div className="form-control w-full ">
+          <div className="md:flex gap-5">
+            <div className="form-control  w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">Height (in feet & inches):</span>
 
@@ -219,7 +219,7 @@ const Edit = () => {
             </div>
 
             {/* weight */}
-            <div className="form-control w-full ">
+            <div className="form-control w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">Weight (in kg):</span>
 
@@ -250,8 +250,8 @@ const Edit = () => {
           </div>
 
           {/* age */}
-          <div className="flex gap-5">
-            <div className="form-control w-full">
+          <div className="md:flex gap-5">
+            <div className="form-control  w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Age</span>
               </label>
@@ -262,7 +262,7 @@ const Edit = () => {
 
 
             {/* Expected Partner Age */}
-            <div className="form-control w-full">
+            <div className="form-control  w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Expected Partner Age</span>
               </label>
@@ -274,8 +274,8 @@ const Edit = () => {
 
 
           {/* Occupation */}
-          <div className="flex gap-5">
-            <div className="form-control w-full ">
+          <div className="md:flex gap-5">
+            <div className="form-control w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">Occupation</span>
 
@@ -312,7 +312,7 @@ const Edit = () => {
             </div>
 
             {/* Race */}
-            <div className="form-control w-full ">
+            <div className="form-control  w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">Race</span>
 
@@ -334,8 +334,8 @@ const Edit = () => {
 
 
           {/* Expected Partner height */}
-          <div className="flex gap-5">
-            <div className="form-control w-full ">
+          <div className="md:flex gap-5">
+            <div className="form-control  w-52 md:w-full ">
               <label className="label">
                 <span className="label-text">Expected Partner Height (in feet & inches):</span>
 
@@ -373,7 +373,7 @@ const Edit = () => {
             </div>
 
             {/* weight */}
-            <div className="form-control w-full ">
+            <div className="form-control  w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Expected Partner Weight (in kg):</span>
 
@@ -404,8 +404,8 @@ const Edit = () => {
           </div>
 
           {/* mobile number */}
-          <div className="flex gap-5">
-          <div className="form-control w-full">
+          <div className="md:flex gap-5">
+          <div className="form-control  w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Mobile Number</span>
               </label>
@@ -416,7 +416,7 @@ const Edit = () => {
 
 
             {/* email */}
-            <div className="form-control w-full">
+            <div className="form-control w-52 md:w-full">
               <label className="label">
                 <span className="label-text">Email Address</span>
               </label>
@@ -427,14 +427,14 @@ const Edit = () => {
           </div>
 
           {/* image filed */}
-          <div className="form-control w-full my-6">
+          <div className="form-control w-52 md:w-full my-6">
             <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
           </div>
 
           <div className="text-center">
             <button
               type="submit"
-              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:ring focus:ring-indigo-200 transition duration-300"
+              className=" w-52 md:w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:ring focus:ring-indigo-200 transition duration-300"
             >
               Save and Publish Now
             </button>
